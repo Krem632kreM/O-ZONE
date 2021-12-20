@@ -1,29 +1,31 @@
 import getData from "./getData";
 import renderGoods from "./renderGoods";
-import {categoryFilters} from "./filters";
+import {
+  categoryFilters
+} from "./filters";
 const catalog = () => {
-  
+
   const btnCatalog = document.querySelector('.catalog-button > button')
   const catalogModal = document.querySelector('.catalog')
   const catalogModalItems = document.querySelectorAll('.catalog li')
 
   let isOpen = false
   btnCatalog.addEventListener('click', () => {
-    isOpen =!isOpen
-    
-    if(isOpen){
-      catalogModal.style.display ='block'
+    isOpen = !isOpen
+
+    if (isOpen) {
+      catalogModal.style.display = 'block'
     } else {
-      catalogModal.style.display ='none'
+      catalogModal.style.display = 'none'
     }
   })
 
   catalogModalItems.forEach(item => {
-    item.addEventListener('click', () =>{
+    item.addEventListener('click', () => {
       const text = item.textContent
-      getData().then((data)=> {
+      getData().then((data) => {
         renderGoods(categoryFilters(data, text));
-        });
+      });
     })
   })
 }
