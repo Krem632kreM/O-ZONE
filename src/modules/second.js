@@ -1,5 +1,10 @@
+import getData from "./getData";
+import postData from "./postData";
 const second = () => {
-  console.log('second');
+  const cartBtn = document.getElementById('cart');
+        getData().then((data)=> {
+          console.log(data);
+          });
 };
 
 
